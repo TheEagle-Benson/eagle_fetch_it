@@ -1,0 +1,21 @@
+{
+  "name": "eaglefetchit",
+  "version": "1.0.0",
+  "description": "Reels, videos, stories etc. downloader for facebook, instagram, x, and more ",
+  "license": "MIT",
+  "author": "TheEagle",
+  "git repository": "https://github.com/TheEagle-Benson/eagle_fetch_it",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev:css": "npx @tailwindcss/cli -i ./static/css/input.css -o ./static/css/output.css --watch",
+    "build:css": "npx @tailwindcss/cli -i ./static/css/input.css -o ./static/css/output.css --minify"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.0",
+    "tailwindcss": "^4.2.0"
+  },
+  "devDependencies": {
+    "daisyui": "^5.5.18"
+  }
+}
