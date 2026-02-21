@@ -12,7 +12,7 @@ class FormatInfo(BaseModel):
   has_audio: bool = Field(..., description="Indicates if the video format includes audio")
   abr: int|None = Field(None, description="Audio bitrate in kbps, if available")
 
-  class VideoInfo(BaseModel):
+class VideoInfo(BaseModel):
     sucess: bool
     title: str|None = None
     thumbnail: str|None = None
@@ -25,11 +25,11 @@ class FormatInfo(BaseModel):
     error: str|None = None
 
 
-  class DownloadRequest(BaseModel):
+class DownloadRequest(BaseModel):
     url: HttpUrl = Field(..., description="URL of the video to download")
     format_id: str = Field(..., description="Identifier of the video format to download")
 
-  class DownloadResponse(BaseModel):
+class DownloadResponse(BaseModel):
     success: bool
     download_url: str|None = None
     title: str|None = None
