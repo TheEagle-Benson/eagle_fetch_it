@@ -81,4 +81,21 @@ class EagleFetchIt:
       audio_formats.sort(key=lambda x: x.abr or 0, reverse=True)
       return {"video": video_formats[:8], "audio": audio_formats[:4]}
     
-    
+    async def get_download_url(self, url: str, format_id: str) -> dict:
+      ydl_opts = {
+        **self.ydl_base_opts,
+        "format": format_id
+      }
+
+      with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        try:
+          info = ydl.extract_info(url, download=False)
+          return {
+            "success": True,
+            "download_url": info["url"],
+            "title": info["title"],
+            "ext": info["ext"],
+          }
+        except Exception as e:
+          return {"success": False, "error": str(e)}
+
