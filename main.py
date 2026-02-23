@@ -12,7 +12,7 @@ app = FastAPI(
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# app.include_router(api.router, prefix="/api", tags=["API"])
+app.include_router(api.router, prefix="/api", tags=["API"])
 app.include_router(pages.router, tags=["Pages"])
 
 @app.get("/health")
