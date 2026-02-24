@@ -10,14 +10,14 @@ class EagleFetchIt:
       "extract_flat": False
     }
 
-    async def get_video_info(self, url: str) -> VideoInfo:
+  async def get_video_info(self, url: str) -> VideoInfo:
       try:
         with yt_dlp.YoutubeDL(self.ydl_base_opts) as ydl:
           info = ydl.extract_info(url, download=False)
           formats_data = self._parse_formats(info.get("formats", []))
 
           return VideoInfo(
-            sucess=True,
+            success=True,
             title=info.get("title"),
             thumbnail=info.get("thumbnail"),
             duration=info.get("duration"),
@@ -28,9 +28,9 @@ class EagleFetchIt:
             audio_formats=formats_data["audio"]
           )
       except Exception as e:
-        return VideoInfo(sucess=False, error=str(e))
+        return VideoInfo(success=False, error=str(e))
       
-    def _parse_formats(self, formats: list[dict]) -> dict[str, list[FormatInfo]]:
+  def _parse_formats(self, formats: list[dict]) -> dict[str, list[FormatInfo]]:
       video_formats = []
       audio_formats = []
       seen_video = set()
@@ -41,7 +41,7 @@ class EagleFetchIt:
         file_size = fmt.get("filesize")
 
         if fmt.get("vcodec") != "none" and fmt.get("height"):
-          resolution = f"{fmt.get("height")}p"
+          resolution = f"{fmt.get('height')}p"
           has_audio = fmt.get("acodec") != "none"
 
           key = f"{resolution}_{ext}"
@@ -81,7 +81,7 @@ class EagleFetchIt:
       audio_formats.sort(key=lambda x: x.abr or 0, reverse=True)
       return {"video": video_formats[:8], "audio": audio_formats[:4]}
     
-    async def get_download_url(self, url: str, format_id: str) -> dict:
+  async def get_download_url(self, url: str, format_id: str) -> dict:
       ydl_opts = {
         **self.ydl_base_opts,
         "format": format_id
@@ -98,4 +98,3 @@ class EagleFetchIt:
           }
         except Exception as e:
           return {"success": False, "error": str(e)}
-

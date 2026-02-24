@@ -9,11 +9,11 @@ class FormatInfo(BaseModel):
   label: str = Field(..., description="Human-readable label for the video format")
   filesize: int|None = Field(None, description="Size of the video file in bytes, if available")
   resolution: str|None = Field(None, description="Resolution of the video format, if available")
-  has_audio: bool = Field(..., description="Indicates if the video format includes audio")
+  has_audio: bool = Field(False, description="Indicates if the video format includes audio")
   abr: int|None = Field(None, description="Audio bitrate in kbps, if available")
 
 class VideoInfo(BaseModel):
-    sucess: bool
+    success: bool
     title: str|None = None
     thumbnail: str|None = None
     duration: int|None = None
