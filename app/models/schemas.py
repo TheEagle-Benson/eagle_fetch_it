@@ -3,14 +3,18 @@ from pydantic import BaseModel, HttpUrl, Field
 class VideoInfoRequest(BaseModel):
   url: HttpUrl = Field(..., description="URL of the video to download")
 
-class FormatInfo(BaseModel):
+class FormatInfoBase(BaseModel):
   format_id: str = Field(..., description="Unique identifier for the video format")
   ext: str = Field(..., description="File extension of the video format")
   label: str = Field(..., description="Human-readable label for the video format")
-  filesize: int|None = Field(None, description="Size of the video file in bytes, if available")
-  resolution: str|None = Field(None, description="Resolution of the video format, if available")
-  has_audio: bool = Field(False, description="Indicates if the video format includes audio")
-  abr: int|None = Field(None, description="Audio bitrate in kbps, if available")
+  filesize: str|None = Field(None, description="Size of the video file in bytes, if available")
+
+class FormatInfoVideo(FormatInfoBase):
+   resolution: str|None = Field(None, description="Resolution of the video format, if available")
+   has_audio: bool = Field(False, description="Indicates if the video format includes audio")
+
+class FormatInfoAudio(FormatInfoBase):
+    abr: int|None = Field(None, description="Audio bitrate in kbps, if available")
 
 class VideoInfo(BaseModel):
     success: bool
@@ -20,8 +24,8 @@ class VideoInfo(BaseModel):
     uploader: str|None = None
     platform: str|None = None
     description: str|None = None
-    video_formats: list[FormatInfo] = []
-    audio_formats: list[FormatInfo] = []
+    video_formats: list[FormatInfoVideo] = []
+    audio_formats: list[FormatInfoAudio] = []
     error: str|None = None
 
 
