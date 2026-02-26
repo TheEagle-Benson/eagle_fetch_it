@@ -20,7 +20,7 @@ class VideoInfo(BaseModel):
     success: bool
     title: str|None = None
     thumbnail: str|None = None
-    duration: int|None = None
+    duration: int|float|None = None
     uploader: str|None = None
     platform: str|None = None
     description: str|None = None
