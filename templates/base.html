@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}EagleFetchIt{% endblock %}</title>
+    <link href="{{ url_for('static', path='/css/output.css') }}" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', path='images/favicon.ico') }}" type="image/x-icon">
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="min-h-screen bg-base-200">
+    {% include 'components/navbar.html' %}
+    <main class="container mx-auto px-4 py-8">
+        {% block content %}{% endblock %}
+    </main>
+    {% include 'components/footer.html' %}
+    
+    <!-- Toast Container for Notifications -->
+    <div id="toast-container" class="toast toast-top toast-end"></div>
+    
+    <script src="{{ url_for('static', path='/js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
