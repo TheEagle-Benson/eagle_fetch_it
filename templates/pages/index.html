@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %}EagleFetchIt - Download from YouTube, TikTok, Instagram & More{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="hero min-h-[50vh] bg-base-100 rounded-lg shadow-xl mb-8">
+    <div class="hero-content text-center">
+        <div class="max-w-2xl">
+            <h1 class="text-5xl font-bold mb-4">Download Videos from Any Platform</h1>
+            <p class="text-xl mb-6">Fast, Free, No Watermarks - Choose Your Quality</p>
+            <div class="flex gap-2 justify-center flex-wrap">
+                <div class="badge badge-primary badge-lg">No Registration</div>
+                <div class="badge badge-secondary badge-lg">HD Quality</div>
+                <div class="badge badge-accent badge-lg">Multiple Formats</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Platform Cards -->
+<h2 class="text-3xl font-bold text-center mb-8">Choose Your Platform</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+    <!-- YouTube -->
+    <div class="hover-3d shadow-xl rounded-lg">
+      <a href="/youtube" class="platform-card">
+        <div class="card-body items-center text-center">
+            <img src="{{ url_for('static', path='images/platform_logos/youtube.png') }}" alt="YouTube Logo" class="w-16 h-16">
+            <h3 class="card-title">YouTube</h3>
+            <p class="text-sm text-base-content/70">Download videos in HD, MP4, or MP3</p>
+        </div>
+    </a>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    
+    <!-- TikTok -->
+    <div class="hover-3d shadow-xl rounded-lg">
+    <a href="/tiktok" class="platform-card">
+        <div class="card-body items-center text-center">
+            <img src="{{ url_for('static', path='images/platform_logos/tiktok.png') }}" alt="TikTok Logo" class="w-16 h-16">
+            <h3 class="card-title">TikTok</h3>
+            <p class="text-sm text-base-content/70">No watermarks, HD quality</p>
+        </div>
+    </a>
+    <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    
+    <!-- Instagram -->
+    <div class="hover-3d shadow-xl rounded-lg">
+    <a href="/instagram" class="platform-card">
+        <div class="card-body items-center text-center">
+            <img src="{{ url_for('static', path='images/platform_logos/instagram.png') }}" alt="Instagram Logo" class="w-16 h-16">
+            <h3 class="card-title">Instagram</h3>
+            <p class="text-sm text-base-content/70">Posts, Reels, and Stories</p>
+        </div>
+    </a>
+    <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    
+    <!-- Twitter/X -->
+    <div class="hover-3d shadow-xl rounded-lg">
+    <a href="/twitter_x" class="platform-card">
+        <div class="card-body items-center text-center">
+            <img src="{{ url_for('static', path='images/platform_logos/x.png') }}" alt="X Logo" class="w-16 h-16">
+            <h3 class="card-title">X</h3>
+            <p class="text-sm text-base-content/70">Download videos from tweets</p>
+        </div>
+    </a>
+    <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    
+    <!-- Facebook -->
+    <div class="hover-3d shadow-xl rounded-lg">
+    <a href="/facebook" class="platform-card">
+        <div class="card-body items-center text-center">
+            <img src="{{ url_for('static', path='images/platform_logos/facebook.png') }}" alt="Facebook Logo" class="w-16 h-16">
+            <h3 class="card-title">Facebook</h3>
+            <p class="text-sm text-base-content/70">Public and accessible videos</p>
+        </div>
+    </a>
+    <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+        <h2 class="card-title text-2xl mb-4">Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex items-start gap-3">
+                <div class="text-2xl">✓</div>
+                <div>
+                    <h4 class="font-bold">No Watermarks</h4>
+                    <p class="text-sm text-base-content/70">Download clean videos without platform watermarks</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3">
+                <div class="text-2xl">✓</div>
+                <div>
+                    <h4 class="font-bold">HD Quality</h4>
+                    <p class="text-sm text-base-content/70">Choose from multiple quality options up to 1080p</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3">
+                <div class="text-2xl">✓</div>
+                <div>
+                    <h4 class="font-bold">Multiple Formats</h4>
+                    <p class="text-sm text-base-content/70">Download as MP4, WebM, or extract audio as MP3</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3">
+                <div class="text-2xl">✓</div>
+                <div>
+                    <h4 class="font-bold">Fast & Free</h4>
+                    <p class="text-sm text-base-content/70">Instant downloads, no registration required</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
