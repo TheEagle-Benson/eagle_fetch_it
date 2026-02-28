@@ -13,33 +13,33 @@ async def homepage(request: Request):
 async def youtube_page(request: Request):
     return template.TemplateResponse(
         request=request,
-        name="youtube.html"
+        name="pages/youtube.html"
     )
 
 @router.get("/facebook", response_class=HTMLResponse)
 async def facebook_page(request: Request):
     return template.TemplateResponse(
         request=request,
-        name="facebbok.html"
+        name="pages/facebook.html"
         )
 
 @router.get("/instagram", response_class=HTMLResponse)
 async def instagram_page(request: Request):
     return template.TemplateResponse(
         request=request,
-        name="instagram.html"
+        name="pages/instagram.html"
     )
 
 @router.get("/twitter_x", response_class=HTMLResponse)
 async def twitter_x_page(request: Request):
     return template.TemplateResponse(
         request=request,
-        name="x.html"
+        name="pages/twitter_x.html"
     )
 
 @router.get("/tiktok", response_class=HTMLResponse)
 async def tiktok_page(request: Request):
     return template.TemplateResponse(
         request=request,
-        name="tiktok.html"
+        name="pages/tiktok.html"
     )
