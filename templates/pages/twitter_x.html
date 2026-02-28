@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block title %}{{ platform_name }} Video Downloader{% endblock %}
+
+{% block content %}
+<!-- Back Button -->
+<div class="mb-4">
+    <a href="/" class="btn btn-ghost btn-sm">
+        ← Back to Home
+    </a>
+</div>
+
+<!-- Platform Header -->
+<div class="text-center mb-8">
+    <img src="{{ platform_icon }}" alt="{{ platform_name }} Logo" class="w-20 h-20 mx-auto mb-4">
+    <h1 class="text-4xl font-bold mb-2">{{ platform_name }} Video Downloader</h1>
+    <p class="text-lg text-base-content/70">{{ description }}</p>
+</div>
+
+<!-- URL Input Section -->
+<div class="card bg-base-100 shadow-xl mb-8">
+    <div class="card-body">
+        <div class="form-control">
+            <label class="label">
+                <span class="label-text font-semibold">Paste {{ platform_name }} URL here</span>
+            </label>
+            <div class="join">
+                <input 
+                    type="text" 
+                    id="video-url" 
+                    placeholder="https://..." 
+                    class="input input-bordered join-item flex-1"
+                />
+                <button 
+                    id="fetch-btn"
+                    class="btn btn-primary join-item"
+                    onclick="fetchVideoInfo()"
+                >
+                    Get Video Info
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Loading Indicator -->
+<div id="loader" class="hidden">
+    <div class="flex flex-col items-center justify-center py-12">
+        <span class="loading loading-spinner loading-lg mb-4"></span>
+        <p class="text-lg">Fetching video information...</p>
+    </div>
+</div>
+
+<!-- Error Display -->
+<div id="error-alert" class="alert alert-error hidden mb-8">
+    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <span id="error-message">Error message here</span>
+</div>
+
+<!-- Video Info Section (Hidden by default) -->
+<div id="video-info-section" class="hidden">
+    <!-- Video Preview Card -->
+    <div class="card bg-base-100 shadow-xl mb-6">
+        <div class="card-body">
+            <div class="flex flex-col md:flex-row gap-6">
+                <!-- Thumbnail -->
+                <div class="w-full md:w-1/3">
+                    <img 
+                        id="video-thumbnail" 
+                        src="" 
+                        alt="Video thumbnail" 
+                        class="rounded-lg w-full object-cover"
+                    />
+                </div>
+                
+                <!-- Video Details -->
+                <div class="flex-1">
+                    <h2 id="video-title" class="text-2xl font-bold mb-2"></h2>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <div class="badge badge-outline" id="video-uploader"></div>
+                        <div class="badge badge-outline" id="video-duration"></div>
+                    </div>
+                    <p id="video-description" class="text-sm text-base-content/70"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Format Selection -->
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h3 class="card-title mb-4">Choose Format & Quality</h3>
+            
+            <!-- Video Formats -->
+            <div class="mb-6">
+                <h4 class="font-bold mb-3">📹 Video Formats</h4>
+                <div id="video-formats" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+            
+            <!-- Audio Formats -->
+            <div>
+                <h4 class="font-bold mb-3">🎵 Audio Only</h4>
+                <div id="audio-formats" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- How to Use Section -->
+<div class="card bg-base-100 shadow-xl mt-8">
+    <div class="card-body">
+        <h3 class="card-title mb-4">How to Download</h3>
+        <div class="steps steps-vertical lg:steps-horizontal">
+            <div class="step step-primary">Paste the video URL above</div>
+            <div class="step step-primary">Click "Get Video Info"</div>
+            <div class="step">Choose your quality/format</div>
+            <div class="step">Download instantly!</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='/js/download.js') }}"></script>
+{% endblock %}
