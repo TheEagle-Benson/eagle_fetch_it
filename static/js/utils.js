@@ -47,6 +47,5 @@ export function showError(message){
     hideElement('error-alert');
     errorModal.close();
   } 
-  
   , 10000);
 }
