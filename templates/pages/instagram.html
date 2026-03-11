@@ -51,12 +51,31 @@
 </div>
 
 <!-- Error Display -->
-<div id="error-alert" class="alert alert-error hidden mb-8">
-    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-    <span id="error-message">Error message here</span>
-</div>
+<dialog id="error-modal" class="modal">
+  <div id="modal-box" class="modal-box">
+    <div id="error-alert" class="alert alert-error hidden mt-2 mb-8">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="stroke-current shrink-0 h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+      <span id="error-message">Error message here</span>
+    </div>
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+        ✕
+      </button>
+    </form>
+  </div>
+</dialog>
 
 <!-- Video Info Section (Hidden by default) -->
 <div id="video-info-section" class="hidden">
@@ -94,7 +113,7 @@
             
             <!-- Video Formats -->
             <div class="mb-6">
-                <h4 class="font-bold mb-3">📹 Video Formats</h4>
+                <h4 class="font-bold mb-3"><i class="fa-solid fa-video"></i> Video Formats</h4>
                 <div id="video-formats" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                     <!-- Dynamically populated -->
                 </div>
@@ -102,7 +121,7 @@
             
             <!-- Audio Formats -->
             <div>
-                <h4 class="font-bold mb-3">🎵 Audio Only</h4>
+                <h4 class="font-bold mb-3"><i class="fa-solid fa-music"></i> Audio Only</h4>
                 <div id="audio-formats" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                     <!-- Dynamically populated -->
                 </div>
