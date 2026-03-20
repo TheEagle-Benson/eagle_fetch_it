@@ -10,18 +10,5 @@
       "src": "(.*)",
       "dest": "main.py"
     }
-  ],
-  "excludeFiles": [
-    "**/*.pyc",
-    "**/__pycache__/**",
-    ".env",
-    ".git/**",
-    ".venv/**",
-    "README.md",
-    "package.json",
-    "package-lock.json",
-    "LICENSE",
-    ".env.example",
-    "node_modules"
   ]
 }
