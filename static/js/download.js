@@ -142,7 +142,7 @@ async function downloadVideo(formatId, ext) {
     console.log('passing data to modal');
 
     if (response.ok) {
-      const data = await response.blob();
+      const data = await response.json();
       console.log(data);
 
       openModal(data);
@@ -193,12 +193,12 @@ function openModalLoader(state = 'close') {
   }
 }
 
-function openModal(blobResponse) {
+function openModal(data) {
   // ✅ Convert extension to standard format
 
   const standardExt = normalizeExtension(extension);
 
-  const blobURL = URL.createObjectURL(blobResponse);
+  const response = data;
   const modal = document.getElementById('modal');
   const modalContent = document.getElementById('modal-content');
 
@@ -246,7 +246,7 @@ function openModal(blobResponse) {
     </div>
     
     <!-- Download Button -->
-    <a href="${blobURL}" 
+    <a href="${response.download_url}" 
        download="${sanitizeFilename(title)}.${standardExt}"
        class="btn btn-primary btn-lg btn-block mb-4">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -281,15 +281,6 @@ function openModal(blobResponse) {
   `;
 
   modal.showModal();
-
-  // Auto-cleanup blob URL when modal closes
-  modal.addEventListener(
-    'close',
-    () => {
-      URL.revokeObjectURL(blobURL);
-    },
-    { once: true },
-  );
 }
 
 // ✅ Extension normalization
