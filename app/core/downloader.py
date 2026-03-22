@@ -1,6 +1,6 @@
 import yt_dlp
 from app.models.schemas import FormatInfoAudio, FormatInfoVideo,  VideoInfo
-from app.core.utils import format_filesize
+from app.core.utils import format_filesize,format_duration
 
 class EagleFetchIt:
   def __init__(self):
@@ -20,14 +20,14 @@ class EagleFetchIt:
             success=True,
             title=info.get("title"),
             thumbnail=info.get("thumbnail"),
-            duration=info.get("duration"),
+            duration=format_duration(info.get("duration")),
             uploader=info.get("uploader") or info.get("channel"),
             platform=info.get("extractor_key"),
             description=info.get("description"),
             video_formats=formats_data["video"],
             audio_formats=formats_data["audio"]
           )
-      except Exception as e:
+      except Exception as e: 
         return VideoInfo(success=False, error=str(e))
       
   def _parse_formats(self, formats: list[dict]) -> dict[str, list[FormatInfoAudio|FormatInfoVideo]]:
