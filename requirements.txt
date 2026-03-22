@@ -2,6 +2,7 @@ annotated-doc==0.0.4
 annotated-types==0.7.0
 anyio==4.12.1
 certifi==2026.1.4
+charset-normalizer==3.4.5
 click==8.3.1
 dnspython==2.8.0
 email-validator==2.3.0
@@ -42,4 +43,4 @@ uvicorn==0.41.0
 uvloop==0.22.1
 watchfiles==1.1.1
 websockets==16.0
-yt-dlp==2026.2.4
+yt-dlp==2026.3.17
