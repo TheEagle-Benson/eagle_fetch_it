@@ -5,10 +5,26 @@ from app.core.utils import format_filesize,format_duration
 class EagleFetchIt:
   def __init__(self):
     self.ydl_base_opts = {
-      "quiet": True,
-      "no_warnings": True,
-      "extract_flat": False
-    }
+            'quiet': True,
+            'no_warnings': True,
+            'extract_flat': False,
+            'nocheckcertificate': True,
+            
+            'extractor_args': {
+                'youtube': {
+                    'player_client': ['android', 'ios'],
+                    'skip': ['hls', 'dash'],
+                }
+            },
+            
+            'http_headers': {
+                'User-Agent': 'com.google.android.youtube/17.36.4 (Linux; U; Android 12; en_US)',
+                'Accept-Language': 'en-US,en;q=0.9',
+            },
+            
+            # ✅ Add age gate bypass
+            'age_limit': None,
+        }
 
   async def get_video_info(self, url: str) -> VideoInfo:
       try:

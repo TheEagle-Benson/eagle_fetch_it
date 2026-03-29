@@ -12,9 +12,12 @@ def format_filesize(bytes_size: int|None) -> str:
     
     return f"{size:.1f} {units[unit_index]}"
 
-def format_duration(seconds: int|None) -> str:
+def format_duration(seconds: int|float|None) -> str:
     if seconds is None:
         return "Unknown"
+    
+    if type(seconds) == float:
+        seconds = int(seconds)
     
     hours = seconds // 3600
     minutes = (seconds % 3600) // 60
