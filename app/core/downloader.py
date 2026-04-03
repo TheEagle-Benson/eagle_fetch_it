@@ -4,13 +4,13 @@ from app.core.utils import format_filesize,format_duration, decode_base64
 
 class EagleFetchIt: 
   def __init__(self):
-    decode_base64()
+    cookies_path = decode_base64()
     self.ydl_base_opts = {
             'quiet': True,
             'no_warnings': True,
             'extract_flat': False,
             'nocheckcertificate': True,
-            'cookiesfile': '../decoded.txt',
+            'cookiefile': cookies_path,
             
             'extractor_args': {
                 'youtube': {

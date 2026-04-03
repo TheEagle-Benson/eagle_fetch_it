@@ -31,13 +31,15 @@ def format_duration(seconds: int|float|None) -> str:
     return f"{minutes:02d}:{secs:02d}"
 
 def decode_base64():
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    cookies_path = os.path.join(base_path, "decoded.txt")
     try:
         encoded_str = os.getenv("COOKIES_BASE64")
         print(encoded_str)
         if encoded_str:
                  decoded_str = base64.b64decode(encoded_str)
-                 with open("../decoded.txt", "wb") as decode_file:
+                 with open(cookies_path, "wb") as decode_file:
                     decode_file.write(decoded_str)
-                    return decode_file
+        return cookies_path
     except Exception:
          print("An error occured")
