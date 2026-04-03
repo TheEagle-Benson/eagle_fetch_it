@@ -1,3 +1,6 @@
+import base64
+import os
+
 def format_filesize(bytes_size: int|None) -> str:
     if bytes_size is None:
         return "Unknown size"
@@ -26,3 +29,15 @@ def format_duration(seconds: int|float|None) -> str:
     if hours > 0:
         return f"{hours:02d}:{minutes:02d}:{secs:02d}"
     return f"{minutes:02d}:{secs:02d}"
+
+def decode_base64():
+    try:
+        encoded_str = os.getenv("COOKIES_BASE64")
+        print(encoded_str)
+        if encoded_str:
+                 decoded_str = base64.b64decode(encoded_str)
+                 with open("../decoded.txt", "wb") as decode_file:
+                    decode_file.write(decoded_str)
+                    return decode_file
+    except Exception:
+         print("An error occured")

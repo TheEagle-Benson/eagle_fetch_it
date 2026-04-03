@@ -1,14 +1,16 @@
 import yt_dlp
 from app.models.schemas import FormatInfoAudio, FormatInfoVideo,  VideoInfo
-from app.core.utils import format_filesize,format_duration
+from app.core.utils import format_filesize,format_duration, decode_base64
 
-class EagleFetchIt:
+class EagleFetchIt: 
   def __init__(self):
+    decode_base64()
     self.ydl_base_opts = {
             'quiet': True,
             'no_warnings': True,
             'extract_flat': False,
             'nocheckcertificate': True,
+            'cookiesfile': '../decoded.txt',
             
             'extractor_args': {
                 'youtube': {
