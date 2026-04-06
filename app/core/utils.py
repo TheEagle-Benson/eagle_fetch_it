@@ -1,5 +1,8 @@
 import base64
 import os
+import logging 
+
+logger = logging.getLogger(__name__)
 
 def format_filesize(bytes_size: int|None) -> str:
     if bytes_size is None:
@@ -32,14 +35,23 @@ def format_duration(seconds: int|float|None) -> str:
 
 def decode_base64():
     base_path = os.path.dirname(os.path.abspath(__file__))
+    logger.info(f"Base path for cookies: {base_path}")
+    print(f"Base path for cookies: {base_path}")
+    
     cookies_path = os.path.join(base_path, "decoded.txt")
+    logger.info(f"Full path for cookies: {cookies_path}")
+    print(f"Full path for cookies: {cookies_path}")
     try:
         encoded_str = os.getenv("COOKIES_BASE64")
-        print(encoded_str)
+        logger.info("Getting encoded cookies from environment variable")
+        logger.info(f"Encoded cookies: {encoded_str}")
+        print(f"Encoded cookies: {encoded_str}")
         if encoded_str:
                  decoded_str = base64.b64decode(encoded_str)
                  with open(cookies_path, "wb") as decode_file:
                     decode_file.write(decoded_str)
         return cookies_path
-    except Exception:
-         print("An error occured")
+    except Exception as e:
+        logger.error(f"An error occurred: {e}")
+        print(f"An error occurred: {e}")
+print(decode_base64())

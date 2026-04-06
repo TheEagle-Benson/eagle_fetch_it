@@ -1,16 +1,17 @@
 import yt_dlp
 from app.models.schemas import FormatInfoAudio, FormatInfoVideo,  VideoInfo
 from app.core.utils import format_filesize,format_duration, decode_base64
+import logging
+
+logger = logging.getLogger(__name__)
 
 class EagleFetchIt: 
   def __init__(self):
-    cookies_path = decode_base64()
     self.ydl_base_opts = {
             'quiet': True,
             'no_warnings': True,
             'extract_flat': False,
             'nocheckcertificate': True,
-            'cookiefile': cookies_path,
             
             'extractor_args': {
                 'youtube': {
@@ -29,6 +30,14 @@ class EagleFetchIt:
         }
 
   async def get_video_info(self, url: str) -> VideoInfo:
+      cookies_path = decode_base64()
+      self.ydl_base_opts['cookiefile'] = cookies_path
+      if cookies_path:
+        print(f"Using cookies from: {cookies_path}")
+        logger.info(f"Using cookies from: {cookies_path}")
+      else:
+        print("No cookies found, proceeding without them.")
+        logger.warning("No cookies found, proceeding without them.")
       try:
         with yt_dlp.YoutubeDL(self.ydl_base_opts) as ydl:
           info = ydl.extract_info(url, download=False)
