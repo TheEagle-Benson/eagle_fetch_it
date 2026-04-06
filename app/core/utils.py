@@ -34,11 +34,7 @@ def format_duration(seconds: int|float|None) -> str:
     return f"{minutes:02d}:{secs:02d}"
 
 def decode_base64():
-    base_path = os.path.dirname(os.path.abspath(__file__))
-    logger.info(f"Base path for cookies: {base_path}")
-    print(f"Base path for cookies: {base_path}")
-    
-    cookies_path = os.path.join(base_path, "decoded.txt")
+    cookies_path = "/tmp/decoded.txt"
     logger.info(f"Full path for cookies: {cookies_path}")
     print(f"Full path for cookies: {cookies_path}")
     try:

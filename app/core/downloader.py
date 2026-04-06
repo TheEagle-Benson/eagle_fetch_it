@@ -31,8 +31,8 @@ class EagleFetchIt:
 
   async def get_video_info(self, url: str) -> VideoInfo:
       cookies_path = decode_base64()
-      self.ydl_base_opts['cookiefile'] = cookies_path
       if cookies_path:
+        self.ydl_base_opts['cookiefile'] = cookies_path
         print(f"Using cookies from: {cookies_path}")
         logger.info(f"Using cookies from: {cookies_path}")
       else:
