@@ -13,11 +13,6 @@ class EagleFetchIt:
             'extract_flat': False,
             'nocheckcertificate': True,
             
-            'extractor_args': {
-                'youtube': {
-                    'player_client': ['android', 'web'],
-                }
-            },
             
             'http_headers': {
                 'User-Agent': 'com.google.android.youtube/17.36.4 (Linux; U; Android 12; en_US)',
