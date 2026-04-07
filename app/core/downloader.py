@@ -15,8 +15,7 @@ class EagleFetchIt:
             
             'extractor_args': {
                 'youtube': {
-                    'player_client': ['android', 'ios'],
-                    'skip': ['hls', 'dash'],
+                    'player_client': ['android', 'web'],
                 }
             },
             
