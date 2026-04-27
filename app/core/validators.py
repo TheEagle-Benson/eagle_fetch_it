@@ -7,18 +7,18 @@ class URLValidator:
             r'youtube\.com\/shorts\/([a-zA-Z0-9_-]+)',
         ],
         'tiktok': [
-            r'tiktok\.com\/@[\w.-]+\/video\/(\d+)',
+            r'tiktok\.com\/@[\w.-]+\/video\/([a-zA-Z0-9_-]+)',
             r'vm\.tiktok\.com\/([a-zA-Z0-9]+)',
         ],
         'instagram': [
             r'instagram\.com\/(?:p|reel)\/([a-zA-Z0-9_-]+)',
         ],
         'twitter': [
-            r'(?:twitter|x)\.com\/\w+\/status\/(\d+)',
+            r'(?:twitter|x)\.com\/\w+\/status\/([a-zA-Z0-9_-]+)',
         ],
         'facebook': [
-            r'facebook\.com\/.*\/videos\/(\d+)',
-            r'fb\.watch\/([a-zA-Z0-9_-]+)',
+            # Match any facebook.com URL (covers videos, reels, photos, stories, etc.)
+            r'(?:https?:\/\/)?(?:www\.|m\.)?facebook\.com\/.*',
         ],
     }
     
