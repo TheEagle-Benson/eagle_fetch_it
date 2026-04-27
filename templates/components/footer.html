@@ -1,6 +1,10 @@
-<footer class="footer footer-center sm:footer p-10 bg-base-100 text-base-content mt-16 border-t border-base-300">
+<footer
+  class="grid grid-cols-1 md:gap-y-2 md:footer md:footer-column p-10 bg-base-100 text-base-content mt-16 border-t border-base-300"
+>
   <!-- Logo & Brand -->
-  <aside class="items-center">
+  <aside
+    class="flex items-center gap-4 border-b pb-2 mb-6 md:mb-0 lg:mb-0 md:border-0 lg:border-0"
+  >
     <img
       src="{{ url_for('static', path='/images/eaglefetchit-logo-128.png') }}"
       alt="EagleFetchIt Logo"
@@ -13,53 +17,60 @@
   </aside>
 
   <!-- Links Section -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-4xl">
+  <div
+    class="grid grid-cols-1 justify-center md:flex md:flex-row md:gap-16 lg:gap-24 md:justify-center"
+  >
     <!-- Company & Legal -->
-    <nav>
-      <h6 class="footer-title">Company & Legal</h6>
+    <nav class="flex flex-col flex-wrap gap-x-6 md:gap-y-4">
+      <h6 class="footer-title mb-0.5">Company & Legal</h6>
       <a href="/about" class="link link-hover">About</a>
       <a href="/privacy" class="link link-hover">Privacy Policy</a>
       <a href="/terms" class="link link-hover">Terms of Service</a>
       <a href="/contact" class="link link-hover">Contact</a>
     </nav>
-
     <!-- Platforms -->
-    <nav>
-      <h6 class="footer-title">Supported Platforms</h6>
+    <nav class="flex flex-col gap-x-6 md:gap-y-4">
+      <h6 class="footer-title mb-0.5">Supported Platforms</h6>
       <a href="/youtube" class="link link-hover">YouTube</a>
       <a href="/tiktok" class="link link-hover">TikTok</a>
       <a href="/instagram" class="link link-hover">Instagram</a>
-      <a href="/twitter" class="link link-hover">Twitter/X</a>
+      <a href="/twitter_x" class="link link-hover">Twitter/X</a>
     </nav>
 
     <!-- Social -->
-    <nav>
-      <h6 class="footer-title">Connect With Us</h6>
-      <div class="flex gap-4 justify-center sm:justify-start">
-        <a href="https://x.com/Ben_codes5002"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="hover:scale-110 hover:text-primary transition-all duration-200"
-           aria-label="Follow us on X (Twitter)"
-           title="Follow us on X">
-          <i class="fa-brands fa-x-twitter text-3xl"></i>
+    <nav class="flex flex-col flex-wrap md:gap-y-4">
+      <h6 class="footer-title mb-0.5">Connect With Us</h6>
+      <div class="flex flex-row md:flex-col gap-4 mt-1">
+        <a
+          href="https://x.com/Ben_codes5002"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:scale-110 hover:text-primary transition-all duration-200"
+          aria-label="Follow us on X (Twitter)"
+          title="Follow us on X"
+        >
+          <i class="fa-brands fa-x-twitter text-3xl md:text-xl"></i>
         </a>
-        
-        <a href="https://www.instagram.com/theeaglebenson/"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="hover:scale-110 hover:text-primary transition-all duration-200"
-           aria-label="Follow us on Instagram"
-           title="Follow us on Instagram">
+
+        <a
+          href="https://www.instagram.com/theeaglebenson/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:scale-110 hover:text-primary transition-all duration-200"
+          aria-label="Follow us on Instagram"
+          title="Follow us on Instagram"
+        >
           <i class="fa-brands fa-instagram text-3xl"></i>
         </a>
-        
-        <a href="https://github.com/TheEagle-Benson/eagle_fetch_it"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="hover:scale-110 hover:text-primary transition-all duration-200"
-           aria-label="View source code on GitHub"
-           title="View source code">
+
+        <a
+          href="https://github.com/TheEagle-Benson/eagle_fetch_it"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:scale-110 hover:text-primary transition-all duration-200"
+          aria-label="View source code on GitHub"
+          title="View source code"
+        >
           <i class="fa-brands fa-github text-3xl"></i>
         </a>
       </div>
@@ -67,17 +78,25 @@
   </div>
 
   <!-- Bottom Bar -->
-  <div class="w-full border-t border-base-300 pt-6 text-center">
+  <div class="w-full border-t border-base-300 pt-6 text-center mt-3">
     <p class="text-sm text-base-content/70">
-      Copyright &copy; <span id="current-year"></span> EagleFetchIt - All rights reserved
+      Copyright &copy; <span id="current-year"></span> EagleFetchIt - All rights
+      reserved
     </p>
     <p class="text-sm text-base-content/60 mt-1">
-      Made with ❤️ in Ghana by <a href="https://github.com/TheEagle-Benson" target="_blank" class="link link-hover font-semibold">TheEagle - Benson</a>
+      Made with ❤️ in Ghana by
+      <a
+        href="https://github.com/TheEagle-Benson"
+        target="_blank"
+        class="link link-hover font-semibold"
+        >TheEagle - Benson</a
+      >
     </p>
   </div>
 </footer>
 
 <script>
   // Dynamic year
-  document.getElementById('current-year').textContent = new Date().getFullYear();
+  document.getElementById('current-year').textContent =
+    new Date().getFullYear();
 </script>
