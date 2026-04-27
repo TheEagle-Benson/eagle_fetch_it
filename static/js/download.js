@@ -93,7 +93,7 @@ async function displayVideoInfo(data) {
     });
   } else {
     audioFormatsContainer.innerHTML =
-      '<p class="text-sm text-base-content/50">No video formats available</p>';
+      '<p class="text-sm text-base-content/50">No audio formats available</p>';
   }
 }
 
