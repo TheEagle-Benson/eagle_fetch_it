@@ -1,4 +1,4 @@
-from pydantic import BaseModel, HttpUrl, Field
+from pydantic import BaseModel, HttpUrl, Field, ConfigDict
 
 class VideoInfoRequest(BaseModel):
   url: HttpUrl = Field(..., description="URL of the video to download")
@@ -26,7 +26,7 @@ class VideoInfo(BaseModel):
     description: str|None = None
     video_formats: list[FormatInfoVideo] = []
     audio_formats: list[FormatInfoAudio] = []
-    error: str|None = None
+    error: dict|str|None = None
 
 
 class DownloadRequest(BaseModel):

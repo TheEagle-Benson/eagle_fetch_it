@@ -38,12 +38,14 @@ async function fetchVideoInfo() {
       displayVideoInfo(data);
     } else {
       const data = await response.json();
+      console.log("object:", data)
       console.error('Error fetching video info:', data.detail);
-      throw new Error(data.detail);
+      console.log(data.detail.error)
+      throw new Error(data.detail.error);
     }
-  } catch (error) {
+  } catch (err) {
     showError(
-      error.message ||
+      err.message ||
         'An error occurred while fetching video info. Please try again.',
     );
   } finally {
@@ -156,11 +158,11 @@ async function downloadVideo(formatId, ext) {
         data.detail || 'Failed to get download URL. Please try again.',
       );
     }
-  } catch (error) {
+  } catch (err) {
     openModalLoader();
     document.getElementById("modal")?.close()
     showError(
-      error.message ||
+      err.message ||
         'An error occurred while starting the download. Please try again.'
     );
   }

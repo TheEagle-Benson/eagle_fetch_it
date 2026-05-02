@@ -1,6 +1,7 @@
 import yt_dlp
 from app.models.schemas import FormatInfoAudio, FormatInfoVideo,  VideoInfo
-from app.core.utils import format_filesize,format_duration, decode_base64
+from app.core.utils import format_filesize,format_duration, decode_base64, wrap_error_response
+
 import logging
 
 logger = logging.getLogger(__name__)
@@ -48,8 +49,37 @@ class EagleFetchIt:
             video_formats=formats_data["video"],
             audio_formats=formats_data["audio"]
           )
-      except Exception as e: 
-        return VideoInfo(success=False, error=str(e))
+      except yt_dlp.utils.DownloadError as e:
+        error_msg = str(e)
+        logger.error(f"DownloadError: {error_msg}")
+        # user_friendly_msg = get_user_friendly_error(error_msg)
+        # return VideoInfo(success=False, error={
+        #   "error_": user_friendly_msg,
+        #   "raw_error": error_msg
+        # })
+        error = wrap_error_response(error_msg)
+        return VideoInfo(**error)
+      except yt_dlp.utils.ExtractorError as e:
+        error_msg = str(e)
+        logger.error(f"ExtractorError: {error_msg}")
+        # user_friendly_msg = get_user_friendly_error(error_msg)
+        # return VideoInfo(success=False, error={
+        #   "error_": user_friendly_msg,
+        #   "raw_error": error_msg
+        # })
+        error = wrap_error_response(error_msg)
+        return VideoInfo(**error)
+      except Exception as e:
+        print(f"Unexpected error: {str(e)}")
+        error_msg = str(e)
+        logger.error(f"DownloadError: {error_msg}")
+        # user_friendly_msg = get_user_friendly_error(error_msg)
+        # return VideoInfo(success=False, error={
+        #   "error_": user_friendly_msg,
+        #   "raw_error": error_msg
+        # })
+        error = wrap_error_response(error_msg)
+        return VideoInfo(**error)
       
   def _parse_formats(self, formats: list[dict]) -> dict[str, list[FormatInfoAudio|FormatInfoVideo]]:
       video_formats = []
@@ -111,5 +141,19 @@ class EagleFetchIt:
             "title": info["title"],
             "ext": info["ext"],
           }
+        except yt_dlp.utils.DownloadError as e:
+          error_msg = str(e)
+          logger.error(f"Download URL Error: {error_msg}")
+          # user_friendly_msg = get_user_friendly_error(error_msg)
+          error = wrap_error_response(error_msg)
+          return VideoInfo(**error)
         except Exception as e:
-          return {"success": False, "error": str(e)}
+          error_msg = str(e)
+        logger.error(f"DownloadError: {error_msg}")
+        # user_friendly_msg = get_user_friendly_error(error_msg)
+        # return VideoInfo(success=False, error={
+        #   "error_": user_friendly_msg,
+        #   "raw_error": error_msg
+        # })
+        error = wrap_error_response(error_msg)
+        return VideoInfo(**error)
